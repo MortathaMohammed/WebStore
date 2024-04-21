@@ -1,0 +1,15 @@
+/home/mdrazor/program/Fantasia/Fantasia.DataAccess/obj/Debug/net8.0/Fantasia.DataAccess.csproj.AssemblyReference.cache
+/home/mdrazor/program/Fantasia/Fantasia.DataAccess/obj/Debug/net8.0/Fantasia.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+/home/mdrazor/program/Fantasia/Fantasia.DataAccess/obj/Debug/net8.0/Fantasia.DataAccess.AssemblyInfoInputs.cache
+/home/mdrazor/program/Fantasia/Fantasia.DataAccess/obj/Debug/net8.0/Fantasia.DataAccess.AssemblyInfo.cs
+/home/mdrazor/program/Fantasia/Fantasia.DataAccess/obj/Debug/net8.0/Fantasia.DataAccess.csproj.CoreCompileInputs.cache
+/home/mdrazor/program/Fantasia/Fantasia.DataAccess/obj/Debug/net8.0/Fantasia.DataAccess.sourcelink.json
+/home/mdrazor/program/Fantasia/Fantasia.DataAccess/bin/Debug/net8.0/Fantasia.DataAccess.deps.json
+/home/mdrazor/program/Fantasia/Fantasia.DataAccess/bin/Debug/net8.0/Fantasia.DataAccess.runtimeconfig.json
+/home/mdrazor/program/Fantasia/Fantasia.DataAccess/bin/Debug/net8.0/Fantasia.DataAccess.dll
+/home/mdrazor/program/Fantasia/Fantasia.DataAccess/bin/Debug/net8.0/Fantasia.DataAccess.pdb
+/home/mdrazor/program/Fantasia/Fantasia.DataAccess/obj/Debug/net8.0/Fantasia.DataAccess.dll
+/home/mdrazor/program/Fantasia/Fantasia.DataAccess/obj/Debug/net8.0/refint/Fantasia.DataAccess.dll
+/home/mdrazor/program/Fantasia/Fantasia.DataAccess/obj/Debug/net8.0/Fantasia.DataAccess.pdb
+/home/mdrazor/program/Fantasia/Fantasia.DataAccess/obj/Debug/net8.0/Fantasia.DataAccess.genruntimeconfig.cache
+/home/mdrazor/program/Fantasia/Fantasia.DataAccess/obj/Debug/net8.0/ref/Fantasia.DataAccess.dll
