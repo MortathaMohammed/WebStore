@@ -37,7 +37,7 @@ public class ProductController : Controller
     public async Task<IActionResult> CreateProduct()
     {
 
-        ViewData["ColoreId"] = new SelectList(_dbContext.Colores, "Id", "Name");
+        ViewData["ColoreId"] = new SelectList(_dbContext.Colors, "Id", "Name");
         ViewData["SizeId"] = new SelectList(_dbContext.Sizes, "Id", "Name");
         return View();
     }

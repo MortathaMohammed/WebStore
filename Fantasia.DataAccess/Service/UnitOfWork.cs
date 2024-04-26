@@ -8,6 +8,8 @@ public class UnitOfWork : IUnitOfWork
     private readonly ApplicationDbContext _dbContext;
     public IProductService ProductService { get; set; }
 
+    public ICategoryService CategoryService { get; set; }
+
     public IColoreService ColoreService { get; set; }
 
     public ISizeService SizeService { get; set; }
@@ -15,6 +17,7 @@ public class UnitOfWork : IUnitOfWork
     public UnitOfWork(ApplicationDbContext dbContext)
     {
         _dbContext = dbContext;
+        CategoryService = new CategoryService(_dbContext);
         ColoreService = new ColoreService(_dbContext);
         ProductService = new ProductService(_dbContext);
         SizeService = new SizeService(_dbContext);

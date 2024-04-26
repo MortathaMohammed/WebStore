@@ -1,0 +1,35 @@
+@model Size
+@{
+    ViewData["Title"] = "Delete Size";
+}
+
+<h3 class="mx-5 mt-5">Delete @Model.Name</h3>
+<hr />
+<div class="row mx-5 mt-5 mb-5">
+
+    <div class="col-md-6">
+        <form asp-action="DeleteSize" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group mt-3">
+                <label asp-for="Name" class="control-label"></label>
+                <input readonly asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Delete" class="btn btn-warning" />
+                <a class="btn btn-secondary" asp-action="GetSize">Back to List</a>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

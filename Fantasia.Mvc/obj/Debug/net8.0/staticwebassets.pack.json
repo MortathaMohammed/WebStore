@@ -13,12 +13,20 @@
       "PackagePath": "staticwebassets/css/style.css"
     },
     {
+      "Id": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/css/styleHover.css",
+      "PackagePath": "staticwebassets/css/styleHover.css"
+    },
+    {
       "Id": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/favicon.ico",
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
       "Id": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
+    },
+    {
+      "Id": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/js/toggle.js",
+      "PackagePath": "staticwebassets/js/toggle.js"
     },
     {
       "Id": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/lib/bootstrap/LICENSE",

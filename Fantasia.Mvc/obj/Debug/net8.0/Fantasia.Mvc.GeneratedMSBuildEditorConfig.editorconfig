@@ -26,6 +26,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Colore/CreateColore.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29sb3JlL0NyZWF0ZUNvbG9yZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Colore/DeleteColore.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29sb3JlL0RlbGV0ZUNvbG9yZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Colore/EditColore.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29sb3JlL0VkaXRDb2xvcmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Colore/GetColores.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29sb3JlL0dldENvbG9yZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -58,12 +74,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Shared/_Admin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19BZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Size/CreateSize.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2l6ZS9DcmVhdGVTaXplLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Size/DeleteSize.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2l6ZS9EZWxldGVTaXplLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Size/EditSize.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2l6ZS9FZGl0U2l6ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Size/GetSizes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2l6ZS9HZXRTaXplcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/_ViewImports.cshtml]

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "FwKPEyHfW22swnvyoqSLFnDDLms0+aK7VIHPhMHU/G0=",
+  "Hash": "ADho9/wSvZKSNZ+TTDWlk+LAn8IkQyfSiD60Q/7g554=",
   "Source": "Fantasia.Mvc",
   "BasePath": "_content/Fantasia.Mvc",
   "Mode": "Default",
@@ -93,6 +93,25 @@
       "OriginalItemSpec": "wwwroot/css/style.css"
     },
     {
+      "Identity": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/css/styleHover.css",
+      "SourceId": "Fantasia.Mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/",
+      "BasePath": "_content/Fantasia.Mvc",
+      "RelativePath": "css/styleHover.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/styleHover.css"
+    },
+    {
       "Identity": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/favicon.ico",
       "SourceId": "Fantasia.Mvc",
       "SourceType": "Discovered",
@@ -129,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/js/site.js"
+    },
+    {
+      "Identity": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/js/toggle.js",
+      "SourceId": "Fantasia.Mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/",
+      "BasePath": "_content/Fantasia.Mvc",
+      "RelativePath": "js/toggle.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/toggle.js"
     },
     {
       "Identity": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",

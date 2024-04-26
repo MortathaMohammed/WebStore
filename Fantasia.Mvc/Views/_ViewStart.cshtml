@@ -1,3 +1,15 @@
-﻿@{
-    Layout = "_Layout";
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+@{
+    if (User.IsInRole("Admin"))
+    {
+
+        Layout = "_Admin";
+    }
+    else
+    {
+        Layout = "_Layout";
+
+    }
 }
