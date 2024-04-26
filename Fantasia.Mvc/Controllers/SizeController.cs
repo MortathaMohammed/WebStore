@@ -16,7 +16,7 @@ public class SizeController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetSize()
+    public async Task<IActionResult> GetSizes()
     {
         var sizes = await _unitOfWork.SizeService.GetSizes();
         return View(sizes);

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "GrxzByok0IwTwn4GcScg4CCh+CdcWRKmwlue1Y1Gwbk=",
+  "Hash": "FwKPEyHfW22swnvyoqSLFnDDLms0+aK7VIHPhMHU/G0=",
   "Source": "Fantasia.Mvc",
   "BasePath": "_content/Fantasia.Mvc",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/site.css"
+    },
+    {
+      "Identity": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/css/style.css",
+      "SourceId": "Fantasia.Mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/",
+      "BasePath": "_content/Fantasia.Mvc",
+      "RelativePath": "css/style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/style.css"
     },
     {
       "Identity": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/favicon.ico",

@@ -15,7 +15,7 @@ public class ColoreController : Controller
         _hostingEnvironment = hostingEnvironment;
     }
     [HttpGet]
-    public async Task<IActionResult> GetColore()
+    public async Task<IActionResult> GetColores()
     {
         var colores = await _unitOfWork.ColoreService.GetColores();
         return View(colores);

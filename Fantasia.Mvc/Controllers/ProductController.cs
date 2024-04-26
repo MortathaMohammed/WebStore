@@ -1,3 +1,4 @@
+using Fantasia.DataAccess.Data;
 using Fantasia.DataAccess.Entity;
 using Fantasia.DataAccess.Service.IService;
 using Microsoft.AspNetCore.Mvc;
@@ -8,10 +9,14 @@ public class ProductController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IHostingEnvironment _hostingEnvironment;
+    private readonly ApplicationDbContext _dbContext;
 
-    public ProductController(IUnitOfWork unitOfWork, IHostingEnvironment hostingEnvironment)
+    public ProductController(IUnitOfWork unitOfWork,
+                             IHostingEnvironment hostingEnvironment,
+                             ApplicationDbContext dbContext)
     {
         _unitOfWork = unitOfWork;
+        _dbContext = dbContext;
         _hostingEnvironment = hostingEnvironment;
     }
     [HttpGet]
@@ -31,10 +36,9 @@ public class ProductController : Controller
     [HttpGet]
     public async Task<IActionResult> CreateProduct()
     {
-        IEnumerable<Colore> colores = (IEnumerable<Colore>)_unitOfWork.ColoreService.GetColores();
-        IEnumerable<Size> sizes = (IEnumerable<Size>)_unitOfWork.SizeService.GetSizes();
-        ViewData["ColoreId"] = new SelectList(colores, "Id", "Name");
-        ViewData["SizeId"] = new SelectList(sizes, "Id", "Name");
+
+        ViewData["ColoreId"] = new SelectList(_dbContext.Colores, "Id", "Name");
+        ViewData["SizeId"] = new SelectList(_dbContext.Sizes, "Id", "Name");
         return View();
     }
 
@@ -73,8 +77,8 @@ public class ProductController : Controller
         {
             return RedirectToAction("GetProducts");
         }
-        IEnumerable<Colore> colores = (IEnumerable<Colore>)_unitOfWork.ColoreService.GetColores();
-        IEnumerable<Size> sizes = (IEnumerable<Size>)_unitOfWork.SizeService.GetSizes();
+        IEnumerable<Colore> colores = await _unitOfWork.ColoreService.GetColores();
+        IEnumerable<Size> sizes = await _unitOfWork.SizeService.GetSizes();
         ViewData["ColoreId"] = new SelectList(colores, "Id", "Name");
         ViewData["SizeId"] = new SelectList(sizes, "Id", "Name");
         return View(product);

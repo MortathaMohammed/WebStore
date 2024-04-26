@@ -1,5 +1,7 @@
 using Fantasia.DataAccess.Data;
 using Fantasia.DataAccess.Entity.Account;
+using Fantasia.DataAccess.Service;
+using Fantasia.DataAccess.Service.IService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("dbConnection"))
 );
