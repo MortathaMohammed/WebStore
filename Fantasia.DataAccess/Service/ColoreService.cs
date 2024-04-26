@@ -13,8 +13,50 @@ public class ColoreService : GenericRepository<Colore>, IColoreService
     {
         _dbContext = dbContext;
     }
-    public Task<Colore> GetColore(int id)
+
+    public async Task<string> CreateColore(Colore colore)
     {
-        throw new NotImplementedException();
+        var existingColore = GetTableNoTracking().Any(std => std.Name == std.Name);
+        if (existingColore) return "Exists";
+        await base.AddAsync(colore);
+        return "Success";
+    }
+
+    public async Task<string> DeleteColore(Colore colore)
+    {
+        var trans = BeginTransaction();
+        try
+        {
+            await DeleteAsync(colore);
+
+            await trans.CommitAsync();
+            return "Success";
+
+        }
+        catch
+        {
+            await trans.RollbackAsync();
+            return "Falied";
+        }
+    }
+
+    public async Task<string> EditColore(Colore colore)
+    {
+        await UpdateAsync(colore);
+        return "Success";
+    }
+
+    public async Task<Colore> GetColore(int id)
+    {
+        var product = GetTableNoTracking()
+                                        .Where(p => p.Id.Equals(id))
+                                        .FirstOrDefault();
+        return product!;
+    }
+
+    public async Task<List<Colore>> GetColores()
+    {
+        var colores = GetTableNoTracking();
+        return await colores.ToListAsync();
     }
 }
