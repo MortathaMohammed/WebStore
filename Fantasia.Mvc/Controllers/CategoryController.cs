@@ -3,12 +3,12 @@ using Fantasia.DataAccess.Service.IService;
 using Microsoft.AspNetCore.Mvc;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 namespace Fantasia.Mvc.Controllers;
-public class CateogryController : Controller
+public class CategoryController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IHostingEnvironment _hostingEnvironment;
 
-    public CateogryController(IUnitOfWork unitOfWork,
+    public CategoryController(IUnitOfWork unitOfWork,
                              IHostingEnvironment hostingEnvironment)
     {
         _unitOfWork = unitOfWork;
@@ -130,6 +130,6 @@ public class CateogryController : Controller
 
         _unitOfWork.Save();
 
-        return RedirectToAction("GetCateogies");
+        return RedirectToAction("GetCategories");
     }
 }

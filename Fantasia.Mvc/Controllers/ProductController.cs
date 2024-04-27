@@ -39,6 +39,7 @@ public class ProductController : Controller
 
         ViewData["ColoreId"] = new SelectList(_dbContext.Colors, "Id", "Name");
         ViewData["SizeId"] = new SelectList(_dbContext.Sizes, "Id", "Name");
+        ViewData["CategoryId"] = new SelectList(_dbContext.Categories, "Id", "Name");
         return View();
     }
 
@@ -56,6 +57,7 @@ public class ProductController : Controller
             SizeId = product.SizeId,
             ColoreId = product.ColoreId,
             ImageUrl = product.ImageUrl,
+            CategoryId = product.CategoryId,
             Made = product.Made
         };
 
@@ -77,10 +79,9 @@ public class ProductController : Controller
         {
             return RedirectToAction("GetProducts");
         }
-        IEnumerable<Colore> colores = await _unitOfWork.ColoreService.GetColores();
-        IEnumerable<Size> sizes = await _unitOfWork.SizeService.GetSizes();
-        ViewData["ColoreId"] = new SelectList(colores, "Id", "Name");
-        ViewData["SizeId"] = new SelectList(sizes, "Id", "Name");
+        ViewData["ColoreId"] = new SelectList(_dbContext.Colors, "Id", "Name");
+        ViewData["SizeId"] = new SelectList(_dbContext.Sizes, "Id", "Name");
+        ViewData["CategoryId"] = new SelectList(_dbContext.Categories, "Id", "Name");
         return View(product);
     }
 
@@ -110,6 +111,7 @@ public class ProductController : Controller
         oldProduct.SizeId = product.SizeId;
         oldProduct.ColoreId = product.ColoreId;
         oldProduct.ImageUrl = product.ImageUrl;
+        oldProduct.CategoryId = product.CategoryId;
         oldProduct.Made = product.Made;
 
 
@@ -127,7 +129,7 @@ public class ProductController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> DeleteRecipe(Product product)
+    public async Task<IActionResult> DeleteProduct(Product product)
     {
         string ImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
 

@@ -89,6 +89,25 @@ namespace Fantasia.DataAccess.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("Fantasia.DataAccess.Entity.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("Fantasia.DataAccess.Entity.Colore", b =>
                 {
                     b.Property<int>("Id")
@@ -107,7 +126,7 @@ namespace Fantasia.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Colores");
+                    b.ToTable("Colors");
                 });
 
             modelBuilder.Entity("Fantasia.DataAccess.Entity.Product", b =>
@@ -118,29 +137,30 @@ namespace Fantasia.DataAccess.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("ColoreId")
                         .HasColumnType("integer");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Made")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Price")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("SizeId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("ColoreId");
 
@@ -300,6 +320,12 @@ namespace Fantasia.DataAccess.Migrations
 
             modelBuilder.Entity("Fantasia.DataAccess.Entity.Product", b =>
                 {
+                    b.HasOne("Fantasia.DataAccess.Entity.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Fantasia.DataAccess.Entity.Colore", "Colore")
                         .WithMany("Products")
                         .HasForeignKey("ColoreId")
@@ -311,6 +337,8 @@ namespace Fantasia.DataAccess.Migrations
                         .HasForeignKey("SizeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Category");
 
                     b.Navigation("Colore");
 
@@ -366,6 +394,11 @@ namespace Fantasia.DataAccess.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Fantasia.DataAccess.Entity.Category", b =>
+                {
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Fantasia.DataAccess.Entity.Colore", b =>

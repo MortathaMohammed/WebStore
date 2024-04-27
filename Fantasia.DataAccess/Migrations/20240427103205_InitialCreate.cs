@@ -53,7 +53,21 @@ namespace Fantasia.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Colores",
+                name: "Categories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    ImageUrl = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Colors",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -63,7 +77,7 @@ namespace Fantasia.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Colores", x => x.Id);
+                    table.PrimaryKey("PK_Colors", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -191,20 +205,27 @@ namespace Fantasia.DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Price = table.Column<string>(type: "text", nullable: false),
-                    ImageUrl = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Price = table.Column<string>(type: "text", nullable: true),
+                    ImageUrl = table.Column<string>(type: "text", nullable: true),
                     ColoreId = table.Column<int>(type: "integer", nullable: false),
                     SizeId = table.Column<int>(type: "integer", nullable: false),
-                    Made = table.Column<string>(type: "text", nullable: false)
+                    CategoryId = table.Column<int>(type: "integer", nullable: false),
+                    Made = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Colores_ColoreId",
+                        name: "FK_Products_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Products_Colors_ColoreId",
                         column: x => x.ColoreId,
-                        principalTable: "Colores",
+                        principalTable: "Colors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -253,6 +274,11 @@ namespace Fantasia.DataAccess.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Products_CategoryId",
+                table: "Products",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_ColoreId",
                 table: "Products",
                 column: "ColoreId");
@@ -291,7 +317,10 @@ namespace Fantasia.DataAccess.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Colores");
+                name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Colors");
 
             migrationBuilder.DropTable(
                 name: "Sizes");

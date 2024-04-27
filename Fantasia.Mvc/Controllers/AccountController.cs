@@ -1,6 +1,7 @@
+using Fantasia.DataAccess.Entity.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Fantasia.DataAccess.Entity.Account;
+
 
 namespace Fantasia.Mvc.Controllers;
 public class AccountController : Controller

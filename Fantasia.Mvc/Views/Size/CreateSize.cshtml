@@ -3,21 +3,21 @@
     ViewData["Title"] = "Create Size";
 }
 
-<h3 class="mx-5 mt-5">Create New Size</h3>
+<h3 class="mx-5 mt-5">أضافة قياس جديد</h3>
 <hr />
 <div class="row mx-5 mb-5">
     <div class="col-md-4">
         <form asp-action="CreateSize" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group mt-3">
-                <label asp-for="Name" class="control-label"></label>
+                <label class="control-label">الاسم</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
 
             <div class="form-group mt-3 ">
-                <input type="submit" value="Create" class="btn btn-primary" />
-                <a class="btn btn-secondary mx-3" asp-action="GetSizes">Back to List</a>
+                <input type="submit" value="أضافة" class="btn btn-primary" />
+                <a class="btn btn-secondary mx-3" asp-action="GetSizes">القياسات</a>
             </div>
         </form>
     </div>

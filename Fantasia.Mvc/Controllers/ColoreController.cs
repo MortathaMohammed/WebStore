@@ -93,6 +93,6 @@ public class ColoreController : Controller
 
         _unitOfWork.Save();
 
-        return RedirectToAction("GetSizes");
+        return RedirectToAction("GetColores");
     }
 }

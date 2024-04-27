@@ -4,31 +4,32 @@
     ViewData["Title"] = "Products";
 }
 <div class="mt-3 mx-3">
-    <a class="btn btn-primary " asp-controller="Product" asp-action="CreateProduct">Create
-        Product</a>
+    <a class="btn btn-primary " asp-controller="Product" asp-action="CreateProduct">أضافة منتج</a>
 </div>
-<table class="table table-hover">
+<table class="table table-hover mt-5">
     <thead>
         <tr>
-            <th scope="col">Image</th>
-            <th scope="col">Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">Category</th>
+            <th scope="col">الاسم</th>
+            <th scope="col">السعر</th>
+            <th scope="col">الصنف</th>
+            <th scope="col">رابط الصورة</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>@item.Image</tr>
-            <tr>@item.Name</tr>
-            <tr>@item.Price</tr>
-            <tr>@item.Name</tr>
             <tr>
-                <a class="btn btn-info mx-3 col-md-4" asp-action="EditProduct" asp-route-id="@item.Id">Edit</a>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>@item.CategoryId</td>
+                <td>@item.ImageUrl</td>
+                <td>
+                    <a class="btn btn-warning mx-3 col-md-3" asp-action="EditProduct" asp-route-id="@item.Id">تعديل</a>
 
-                <a class="btn btn-warning mx-2 col-md-4" asp-action="DeleteProduct" asp-route-id="@item.Id">Delete</a>
+                    <a class="btn btn-danger mx-3 col-md-3" asp-action="DeleteProduct" asp-route-id="@item.Id">حذف</a>
 
+                </td>
             </tr>
         }
     </tbody>
