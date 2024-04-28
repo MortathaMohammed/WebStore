@@ -42,20 +42,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2F0ZWdvcnkvR2V0Q2F0ZWdvcmllcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Colore/CreateColore.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29sb3JlL0NyZWF0ZUNvbG9yZS5jc2h0bWw=
+[/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Color/CreateColor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29sb3IvQ3JlYXRlQ29sb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Colore/DeleteColore.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29sb3JlL0RlbGV0ZUNvbG9yZS5jc2h0bWw=
+[/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Color/DeleteColor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29sb3IvRGVsZXRlQ29sb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Colore/EditColore.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29sb3JlL0VkaXRDb2xvcmUuY3NodG1s
+[/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Color/EditColor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29sb3IvRWRpdENvbG9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Colore/GetColores.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29sb3JlL0dldENvbG9yZXMuY3NodG1s
+[/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Color/GetColours.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29sb3IvR2V0Q29sb3Vycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/mdrazor/program/Fantasia/Fantasia.Mvc/Views/Home/Index.cshtml]

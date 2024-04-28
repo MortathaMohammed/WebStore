@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fantasia.Mvc")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+90d8a20d852dec86e71375d7d7ba5fd9e9f6ef17")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+826fe0a788c8edbc91fc2c8fee04473920d3748b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fantasia.Mvc")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fantasia.Mvc")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

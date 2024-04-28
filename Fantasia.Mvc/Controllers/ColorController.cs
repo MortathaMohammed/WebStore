@@ -19,7 +19,7 @@ public class ColorController : Controller
 
     }
     [HttpGet]
-    public async Task<IActionResult> GetColors()
+    public async Task<IActionResult> GetColours()
     {
         var colorList = new ColorListColor();
         colorList.Colours = await _unitOfWork.ColorService.GetColours();
@@ -40,7 +40,7 @@ public class ColorController : Controller
         return View();
     }
 
-    public async Task<IActionResult> CreateColore(Color color)
+    public async Task<IActionResult> CreateColor(Color color)
     {
         if (color.Name != null || color.Code != null)
         {
@@ -57,26 +57,26 @@ public class ColorController : Controller
                 return View(color);
             }
             _unitOfWork.Save();
-            return RedirectToAction("GetColores");
+            return RedirectToAction("GetColours");
         }
         return View(color);
 
     }
 
     [HttpGet]
-    public async Task<IActionResult> EditColore(int id)
+    public async Task<IActionResult> EditColor(int id)
     {
         var color = await _unitOfWork.ColorService.GetColor(id);
         if (color == null)
         {
-            return RedirectToAction("GetColores");
+            return RedirectToAction("GetColours");
         }
 
         return View(color);
     }
 
     [HttpPost]
-    public async Task<IActionResult> EditColore(Color color)
+    public async Task<IActionResult> EditColor(Color color)
     {
         var oldColor = await _unitOfWork.ColorService.GetColor(color.Id);
         oldColor.Name = color.Name;
@@ -84,12 +84,12 @@ public class ColorController : Controller
 
         await _unitOfWork.ColorService.EditColor(oldColor);
         _unitOfWork.Save();
-        return RedirectToAction("GetColores");
+        return RedirectToAction("GetColours");
 
     }
 
     [HttpGet]
-    public async Task<IActionResult> DeleteColore(int id)
+    public async Task<IActionResult> DeleteColor(int id)
     {
         var color = await _unitOfWork.ColorService.GetColor(id);
         return View(color);
@@ -103,6 +103,6 @@ public class ColorController : Controller
 
         _unitOfWork.Save();
 
-        return RedirectToAction("GetColores");
+        return RedirectToAction("GetColours");
     }
 }
