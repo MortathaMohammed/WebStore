@@ -21,20 +21,8 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
-      "Id": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/images/360_F_524300228_egMskw0zvvdwNUFPeJLlplclKzFamXBk.jpg",
-      "PackagePath": "staticwebassets/images/360_F_524300228_egMskw0zvvdwNUFPeJLlplclKzFamXBk.jpg"
-    },
-    {
-      "Id": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/images/cat2.jpeg",
-      "PackagePath": "staticwebassets/images/cat2.jpeg"
-    },
-    {
-      "Id": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/images/pexels.jpg",
-      "PackagePath": "staticwebassets/images/pexels.jpg"
-    },
-    {
-      "Id": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/images/superJumbo.jpg",
-      "PackagePath": "staticwebassets/images/superJumbo.jpg"
+      "Id": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/images/Cat_August.jpg",
+      "PackagePath": "staticwebassets/images/Cat_August.jpg"
     },
     {
       "Id": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/js/site.js",

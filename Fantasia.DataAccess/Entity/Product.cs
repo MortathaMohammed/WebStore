@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Fantasia.DataAccess.Entity;
 public class Product
@@ -8,17 +9,11 @@ public class Product
     public string? Name { get; set; }
     public string? Price { get; set; }
 
-    [NotMapped]
-    public IFormFile? Image { get; set; }
     public string? ImageUrl { get; set; }
 
-    public int ColoreId { get; set; }
-    [ForeignKey("ColoreId")]
-    public Colore? Colore { get; set; }
+    public ICollection<ProductSize> ProductSizes { get; set; } = new List<ProductSize>();
 
-    public int SizeId { get; set; }
-    [ForeignKey("SizeId")]
-    public Size? Size { get; set; }
+    public ICollection<ProductColor> ProductColours { get; set; } = new List<ProductColor>();
 
     public int CategoryId { get; set; }
     [ForeignKey("CategoryId")]

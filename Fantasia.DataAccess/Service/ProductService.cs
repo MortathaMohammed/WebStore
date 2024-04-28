@@ -48,16 +48,15 @@ public class ProductService : GenericRepository<Product>, IProductService
     public async Task<Product> GetProduct(int id)
     {
         var product = GetTableNoTracking()
-                                        .Include(x => x.Size)
-                                        .Include(c => c.Colore)
-                                        .Where(p => p.Id.Equals(id))
-                                        .FirstOrDefault();
+                                        .Include("ProductColor.Colore")
+                                        .Include("ProductSize.Size")
+                                        .FirstOrDefault(p => p.Id.Equals(id));
         return product!;
     }
 
     public async Task<List<Product>> GetProducts()
     {
-        var products = GetTableNoTracking().Include(x => x.Size).Include(c => c.Colore);
+        var products = GetTableNoTracking();
         return await products.ToListAsync();
     }
 }

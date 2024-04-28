@@ -208,8 +208,6 @@ namespace Fantasia.DataAccess.Migrations
                     Name = table.Column<string>(type: "text", nullable: true),
                     Price = table.Column<string>(type: "text", nullable: true),
                     ImageUrl = table.Column<string>(type: "text", nullable: true),
-                    ColoreId = table.Column<int>(type: "integer", nullable: false),
-                    SizeId = table.Column<int>(type: "integer", nullable: false),
                     CategoryId = table.Column<int>(type: "integer", nullable: false),
                     Made = table.Column<string>(type: "text", nullable: true)
                 },
@@ -222,14 +220,54 @@ namespace Fantasia.DataAccess.Migrations
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductColor",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ProductId = table.Column<int>(type: "integer", nullable: false),
+                    ColorId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductColor", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Colors_ColoreId",
-                        column: x => x.ColoreId,
+                        name: "FK_ProductColor_Colors_ColorId",
+                        column: x => x.ColorId,
                         principalTable: "Colors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Products_Sizes_SizeId",
+                        name: "FK_ProductColor_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductSize",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ProductId = table.Column<int>(type: "integer", nullable: false),
+                    SizeId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductSize", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProductSize_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProductSize_Sizes_SizeId",
                         column: x => x.SizeId,
                         principalTable: "Sizes",
                         principalColumn: "Id",
@@ -274,18 +312,28 @@ namespace Fantasia.DataAccess.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_ProductColor_ColorId",
+                table: "ProductColor",
+                column: "ColorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductColor_ProductId",
+                table: "ProductColor",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
                 table: "Products",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_ColoreId",
-                table: "Products",
-                column: "ColoreId");
+                name: "IX_ProductSize_ProductId",
+                table: "ProductSize",
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_SizeId",
-                table: "Products",
+                name: "IX_ProductSize_SizeId",
+                table: "ProductSize",
                 column: "SizeId");
         }
 
@@ -308,7 +356,10 @@ namespace Fantasia.DataAccess.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "ProductColor");
+
+            migrationBuilder.DropTable(
+                name: "ProductSize");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -317,13 +368,16 @@ namespace Fantasia.DataAccess.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Categories");
-
-            migrationBuilder.DropTable(
                 name: "Colors");
 
             migrationBuilder.DropTable(
+                name: "Products");
+
+            migrationBuilder.DropTable(
                 name: "Sizes");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
         }
     }
 }

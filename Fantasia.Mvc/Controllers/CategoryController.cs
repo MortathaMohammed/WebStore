@@ -38,7 +38,7 @@ public class CategoryController : Controller
     public async Task<IActionResult> CreateCategory(Category category)
     {
         string ImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
-        string imagepath = Path.Combine(ImageFolder, category.Image.FileName);
+        string imagepath = Path.Combine(ImageFolder, category!.Image!.FileName);
         category.Image.CopyTo(new FileStream(imagepath, FileMode.Create));
         category.ImageUrl = category.Image.FileName;
 
@@ -75,29 +75,31 @@ public class CategoryController : Controller
     [HttpPost]
     public async Task<IActionResult> EditCategory(Category category)
     {
-        string ImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
-        string imagepath = Path.Combine(ImageFolder, category.Image.FileName);
-
-
         var oldCategory = await _unitOfWork.CategoryService.GetCategory(category.Id);
-        var image = oldCategory.ImageUrl;
-        var ImageOldPath = Path.Combine(ImageFolder, image);
-        category.ImageUrl = category.Image.FileName;
-
-        if (imagepath != ImageOldPath)
+        if (category.Image != null)
         {
-            // Delete Old File
-            System.IO.File.Delete(ImageOldPath);
+            string ImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
+            string imagepath = Path.Combine(ImageFolder, category!.Image!.FileName);
 
-            // Save New File
-            category.Image.CopyTo(new FileStream(imagepath, FileMode.Create));
+
+            var image = oldCategory.ImageUrl;
+            var ImageOldPath = Path.Combine(ImageFolder, image!);
+            category.ImageUrl = category.Image.FileName;
+
+            if (imagepath != ImageOldPath)
+            {
+                // Delete Old File
+                System.IO.File.Delete(ImageOldPath);
+
+                // Save New File
+                category.Image.CopyTo(new FileStream(imagepath, FileMode.Create));
+            }
+
+            oldCategory.ImageUrl = category.ImageUrl;
         }
 
+
         oldCategory.Name = category.Name;
-
-        oldCategory.ImageUrl = category.ImageUrl;
-
-
 
         await _unitOfWork.CategoryService.EditCategory(oldCategory);
         _unitOfWork.Save();

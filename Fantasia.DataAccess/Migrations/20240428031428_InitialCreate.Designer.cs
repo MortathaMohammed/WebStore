@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Fantasia.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240427103205_InitialCreate")]
+    [Migration("20240428031428_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -143,9 +143,6 @@ namespace Fantasia.DataAccess.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ColoreId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("ImageUrl")
                         .HasColumnType("text");
 
@@ -158,18 +155,57 @@ namespace Fantasia.DataAccess.Migrations
                     b.Property<string>("Price")
                         .HasColumnType("text");
 
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Fantasia.DataAccess.Entity.ProductColor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ColorId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ColorId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductColor");
+                });
+
+            modelBuilder.Entity("Fantasia.DataAccess.Entity.ProductSize", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("SizeId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("ColoreId");
+                    b.HasIndex("ProductId");
 
                     b.HasIndex("SizeId");
 
-                    b.ToTable("Products");
+                    b.ToTable("ProductSize");
                 });
 
             modelBuilder.Entity("Fantasia.DataAccess.Entity.Size", b =>
@@ -329,21 +365,43 @@ namespace Fantasia.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Fantasia.DataAccess.Entity.ProductColor", b =>
+                {
                     b.HasOne("Fantasia.DataAccess.Entity.Colore", "Colore")
-                        .WithMany("Products")
-                        .HasForeignKey("ColoreId")
+                        .WithMany("ProductColours")
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Fantasia.DataAccess.Entity.Product", "Product")
+                        .WithMany("ProductColours")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Colore");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Fantasia.DataAccess.Entity.ProductSize", b =>
+                {
+                    b.HasOne("Fantasia.DataAccess.Entity.Product", "Product")
+                        .WithMany("ProductSizes")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Fantasia.DataAccess.Entity.Size", "Size")
-                        .WithMany("Products")
+                        .WithMany("ProductSizes")
                         .HasForeignKey("SizeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
-
-                    b.Navigation("Colore");
+                    b.Navigation("Product");
 
                     b.Navigation("Size");
                 });
@@ -406,12 +464,19 @@ namespace Fantasia.DataAccess.Migrations
 
             modelBuilder.Entity("Fantasia.DataAccess.Entity.Colore", b =>
                 {
-                    b.Navigation("Products");
+                    b.Navigation("ProductColours");
+                });
+
+            modelBuilder.Entity("Fantasia.DataAccess.Entity.Product", b =>
+                {
+                    b.Navigation("ProductColours");
+
+                    b.Navigation("ProductSizes");
                 });
 
             modelBuilder.Entity("Fantasia.DataAccess.Entity.Size", b =>
                 {
-                    b.Navigation("Products");
+                    b.Navigation("ProductSizes");
                 });
 #pragma warning restore 612, 618
         }
