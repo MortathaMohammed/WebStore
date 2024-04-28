@@ -11,5 +11,5 @@ public class ProductColor
 
     public int ColorId { get; set; }
     [ForeignKey("ColorId")]
-    public Colore? Colore { get; set; }
+    public Color? Color { get; set; }
 }

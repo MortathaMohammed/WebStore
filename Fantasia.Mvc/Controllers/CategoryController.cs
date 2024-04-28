@@ -1,5 +1,6 @@
 using Fantasia.DataAccess.Entity;
 using Fantasia.DataAccess.Service.IService;
+using Fantasia.Mvc.Models;
 using Microsoft.AspNetCore.Mvc;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 namespace Fantasia.Mvc.Controllers;
@@ -18,8 +19,10 @@ public class CategoryController : Controller
     [HttpGet]
     public async Task<IActionResult> GetCategories()
     {
-        var categories = await _unitOfWork.CategoryService.GetCategories();
-        return View(categories);
+        var categoryList = new CategoryListCateogry();
+        categoryList.Categories = await _unitOfWork.CategoryService.GetCategories();
+        categoryList.Category = new Category();
+        return View(categoryList);
     }
 
     [HttpGet]
@@ -51,7 +54,7 @@ public class CategoryController : Controller
         };
 
         var categoryResult = await _unitOfWork.CategoryService.CreateCategory(newCategory);
-        if (categoryResult == "Exist")
+        if (categoryResult == "Exists")
         {
             return View(category);
         }

@@ -14,7 +14,7 @@ public class SizeService : GenericRepository<Size>, ISizeService
     }
     public async Task<string> CreateSize(Size size)
     {
-        var existingSize = GetTableNoTracking().Any(sz => sz.Name == sz.Name);
+        var existingSize = GetTableNoTracking().Any(sz => sz.Name == size.Name);
         if (existingSize) return "Exists";
         await base.AddAsync(size);
         return "Success";

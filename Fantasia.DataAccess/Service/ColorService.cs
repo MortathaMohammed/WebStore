@@ -6,28 +6,28 @@ using Fantasia.DataAccess.Service.IService;
 using Microsoft.EntityFrameworkCore;
 
 namespace Fantasia.DataAccess.Service;
-public class ColoreService : GenericRepository<Colore>, IColoreService
+public class ColorService : GenericRepository<Color>, IColorService
 {
     private readonly ApplicationDbContext _dbContext;
-    public ColoreService(ApplicationDbContext dbContext) : base(dbContext)
+    public ColorService(ApplicationDbContext dbContext) : base(dbContext)
     {
         _dbContext = dbContext;
     }
 
-    public async Task<string> CreateColore(Colore colore)
+    public async Task<string> CreateColor(Color color)
     {
-        var existingColore = GetTableNoTracking().Any(std => std.Name == std.Name);
+        var existingColore = GetTableNoTracking().Any(std => std.Name == color.Name);
         if (existingColore) return "Exists";
-        await base.AddAsync(colore);
+        await base.AddAsync(color);
         return "Success";
     }
 
-    public async Task<string> DeleteColore(Colore colore)
+    public async Task<string> DeleteColor(Color color)
     {
         var trans = BeginTransaction();
         try
         {
-            await DeleteAsync(colore);
+            await DeleteAsync(color);
 
             await trans.CommitAsync();
             return "Success";
@@ -40,13 +40,13 @@ public class ColoreService : GenericRepository<Colore>, IColoreService
         }
     }
 
-    public async Task<string> EditColore(Colore colore)
+    public async Task<string> EditColor(Color color)
     {
-        await UpdateAsync(colore);
+        await UpdateAsync(color);
         return "Success";
     }
 
-    public async Task<Colore> GetColore(int id)
+    public async Task<Color> GetColor(int id)
     {
         var product = GetTableNoTracking()
                                         .Where(p => p.Id.Equals(id))
@@ -54,7 +54,7 @@ public class ColoreService : GenericRepository<Colore>, IColoreService
         return product!;
     }
 
-    public async Task<List<Colore>> GetColores()
+    public async Task<List<Color>> GetColours()
     {
         var colores = GetTableNoTracking();
         return await colores.ToListAsync();

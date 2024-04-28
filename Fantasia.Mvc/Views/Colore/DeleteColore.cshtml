@@ -1,6 +1,6 @@
-@model Colore
+@model Color
 @{
-    ViewData["Title"] = "Delete Colore";
+    ViewData["Title"] = "Delete Color";
 }
 
 <h3 class="mx-5 mt-5">حذف @Model.Name</h3>
@@ -8,7 +8,7 @@
 <div class="row mx-5 mt-5 mb-5">
 
     <div class="col-md-6">
-        <form asp-action="DeleteColore" enctype="multipart/form-data">
+        <form asp-action="DeleteColor" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group mt-3">
@@ -25,7 +25,7 @@
 
             <div class="form-group mt-3">
                 <input type="submit" value="حذف" class="btn btn-danger" />
-                <a class="btn btn-secondary" asp-action="GetColores">الالوان</a>
+                <a class="btn btn-secondary" asp-action="GetColours">الالوان</a>
             </div>
         </form>
     </div>

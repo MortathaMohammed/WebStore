@@ -1,7 +1,8 @@
 using Fantasia.DataAccess.Entity;
 using Fantasia.DataAccess.Service.IService;
+using Fantasia.Mvc.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 namespace Fantasia.Mvc.Controllers;
 public class SizeController : Controller
@@ -18,8 +19,10 @@ public class SizeController : Controller
     [HttpGet]
     public async Task<IActionResult> GetSizes()
     {
-        var sizes = await _unitOfWork.SizeService.GetSizes();
-        return View(sizes);
+        var sizeList = new SizeListSize();
+        sizeList.Sizes = await _unitOfWork.SizeService.GetSizes();
+        sizeList.Size = new Size();
+        return View(sizeList);
     }
 
     [HttpGet]
@@ -45,7 +48,7 @@ public class SizeController : Controller
         };
 
         var sizeResult = await _unitOfWork.SizeService.CreateSize(newSize);
-        if (sizeResult == "Exist")
+        if (sizeResult == "Exists")
         {
             return View(size);
         }
@@ -73,7 +76,7 @@ public class SizeController : Controller
         oldSize.Name = size.Name;
 
 
-        await _unitOfWork.SizeService.CreateSize(oldSize);
+        await _unitOfWork.SizeService.EditSize(oldSize);
         _unitOfWork.Save();
         return RedirectToAction("GetSizes");
 

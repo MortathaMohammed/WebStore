@@ -15,7 +15,7 @@ public class ProductService : GenericRepository<Product>, IProductService
 
     public async Task<string> CreateProduct(Product product)
     {
-        var existingProduct = GetTableNoTracking().Any(std => std.Name == std.Name);
+        var existingProduct = GetTableNoTracking().Any(std => std.Name == product.Name);
         if (existingProduct) return "Exists";
         await base.AddAsync(product);
         return "Success";
@@ -47,10 +47,9 @@ public class ProductService : GenericRepository<Product>, IProductService
 
     public async Task<Product> GetProduct(int id)
     {
-        var product = GetTableNoTracking()
-                                        .Include("ProductColor.Colore")
-                                        .Include("ProductSize.Size")
-                                        .FirstOrDefault(p => p.Id.Equals(id));
+        var product = GetTableNoTracking().FirstOrDefault(p => p.Id.Equals(id));
+
+
         return product!;
     }
 

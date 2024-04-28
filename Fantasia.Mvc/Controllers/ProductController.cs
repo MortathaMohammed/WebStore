@@ -39,20 +39,20 @@ public class ProductController : Controller
     public async Task<IActionResult> CreateProduct()
     {
 
-        ViewData["ColoreId"] = new SelectList(_dbContext.Colors, "Id", "Name");
+        ViewData["ColoreId"] = new SelectList(_dbContext.Colours, "Id", "Name");
         ViewData["SizeId"] = new SelectList(_dbContext.Sizes, "Id", "Name");
         ViewData["CategoryId"] = new SelectList(_dbContext.Categories, "Id", "Name");
-        var colours = await _unitOfWork.ColoreService.GetColores();
+        var colours = await _unitOfWork.ColorService.GetColours();
         var selectColoursList = new List<SelectListItem>();
         foreach (var item in colours)
         {
-            selectColoursList.Add(new SelectListItem(item.Id.ToString(), item.Code));
+            selectColoursList.Add(new SelectListItem(item.Name, item.Id.ToString()));
         }
-        var sizes = await _unitOfWork.ColoreService.GetColores();
+        var sizes = await _unitOfWork.SizeService.GetSizes();
         var selectSizesList = new List<SelectListItem>();
         foreach (var item in sizes)
         {
-            selectSizesList.Add(new SelectListItem(item.Id.ToString(), item.Name));
+            selectSizesList.Add(new SelectListItem(item.Name, item.Id.ToString()));
         }
 
         var product = new ProductCreateViewModel()
@@ -68,7 +68,7 @@ public class ProductController : Controller
     {
 
         string ImageFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
-        string imagepath = Path.Combine(ImageFolder, product.Image.FileName);
+        string imagepath = Path.Combine(ImageFolder, product.Image!.FileName);
         product.Image.CopyTo(new FileStream(imagepath, FileMode.Create));
         product.ImageUrl = product.Image.FileName;
 
@@ -81,14 +81,14 @@ public class ProductController : Controller
             Made = product.Made
         };
 
-        foreach (var item in product.SelectedColours)
+        foreach (var item in product.SelectedColours!)
         {
             newProduct.ProductColours.Add(new ProductColor()
             {
                 ColorId = item
             });
         }
-        foreach (var item in product.SelectedSizes)
+        foreach (var item in product.SelectedSizes!)
         {
             newProduct.ProductSizes.Add(new ProductSize()
             {
@@ -97,7 +97,7 @@ public class ProductController : Controller
         }
 
         var productResult = await _unitOfWork.ProductService.CreateProduct(newProduct);
-        if (productResult == "Exist")
+        if (productResult == "Exists")
         {
             return View(product);
         }
@@ -110,11 +110,11 @@ public class ProductController : Controller
     public async Task<IActionResult> EditProduct(int id)
     {
         var product = await _unitOfWork.ProductService.GetProduct(id);
-        var colours = await _unitOfWork.ColoreService.GetColores();
-        var selectColours = product.ProductColours.Select(x => new Colore()
+        var colours = await _unitOfWork.ColorService.GetColours();
+        var selectColours = product.ProductColours.Select(x => new Color()
         {
-            Id = x.Colore!.Id,
-            Code = x.Colore.Code
+            Id = x.Color.Id,
+            Code = x.Color.Code
         });
 
         var selectColoursList = new List<SelectListItem>();
@@ -128,12 +128,12 @@ public class ProductController : Controller
         var sizes = await _unitOfWork.SizeService.GetSizes();
         var selectSizes = product.ProductSizes.Select(x => new Size()
         {
-            Id = x.Size!.Id,
+            Id = x.Size.Id,
             Name = x.Size.Name
         });
 
         var selectSizesList = new List<SelectListItem>();
-        colours.ForEach(i => selectSizesList.Add(new SelectListItem(
+        sizes.ForEach(i => selectSizesList.Add(new SelectListItem(
             i.Name, i.Id.ToString(),
             selectSizes
             .Select(x => x.Id)
@@ -153,7 +153,7 @@ public class ProductController : Controller
 
         };
 
-        ViewData["ColoreId"] = new SelectList(_dbContext.Colors, "Id", "Name");
+        ViewData["ColoreId"] = new SelectList(_dbContext.Colours, "Id", "Name");
         ViewData["SizeId"] = new SelectList(_dbContext.Sizes, "Id", "Name");
         ViewData["CategoryId"] = new SelectList(_dbContext.Categories, "Id", "Name");
         return View(newProduct);
@@ -190,47 +190,48 @@ public class ProductController : Controller
 
         oldProduct.CategoryId = product.CategoryId;
         oldProduct.Made = product.Made;
-
-        var selectedColours = product.SelectedColours;
-        var existingColours = oldProduct.ProductColours.Select(x => x.ColorId).ToList();
-
-        var toAdd = selectedColours.Except(existingColours).ToList();
-        var toRemove = existingColours.Except(selectedColours).ToList();
-
-        oldProduct.ProductColours = oldProduct.ProductColours.Where(x => !toRemove.Contains(x.ColorId)).ToList();
-
-
-        foreach (var item in toAdd)
+        if (product.SelectedColours != null || product.SelectedSizes != null)
         {
-            oldProduct.ProductColours.Add(new ProductColor()
+            var selectedColours = product.SelectedColours;
+            var existingColours = oldProduct.ProductColours.Select(x => x.ColorId).ToList();
+
+            var ColoursToAdd = selectedColours!.Except(existingColours).ToList();
+            var ColoursToRemove = existingColours.Except(selectedColours!).ToList();
+
+            oldProduct.ProductColours = oldProduct.ProductColours.Where(x => ColoursToRemove.Contains(x.ColorId)).ToList();
+
+
+            foreach (var item in ColoursToAdd)
             {
-                ColorId = item,
-                ProductId = oldProduct.Id
-            });
+                oldProduct.ProductColours.Add(new ProductColor()
+                {
+                    ColorId = item,
+                    ProductId = oldProduct.Id
+                });
+            }
+
+
+            var selectedSizes = product.SelectedSizes;
+            var existingSizes = oldProduct.ProductSizes.Select(x => x.SizeId).ToList();
+
+            var SizeToAdd = selectedSizes!.Except(existingSizes).ToList();
+            var SizeToRemove = existingSizes.Except(selectedSizes!).ToList();
+
+            oldProduct.ProductSizes = oldProduct.ProductSizes.Where(x => !SizeToRemove.Contains(x.SizeId)).ToList();
+
+
+            foreach (var item in SizeToAdd)
+            {
+                oldProduct.ProductSizes.Add(new ProductSize()
+                {
+                    SizeId = item,
+                    ProductId = oldProduct.Id
+                });
+            }
         }
 
 
-        var selectedSizes = product.SelectedSizes;
-        var existingSizes = oldProduct.ProductSizes.Select(x => x.SizeId).ToList();
-
-        var toAddSize = selectedSizes.Except(existingSizes).ToList();
-        var toRemoveSize = existingSizes.Except(selectedSizes).ToList();
-
-        oldProduct.ProductSizes = oldProduct.ProductSizes.Where(x => !toRemoveSize.Contains(x.SizeId)).ToList();
-
-
-        foreach (var item in toAddSize)
-        {
-            oldProduct.ProductSizes.Add(new ProductSize()
-            {
-                SizeId = item,
-                ProductId = oldProduct.Id
-            });
-        }
-
-
-
-        await _unitOfWork.ProductService.CreateProduct(oldProduct);
+        await _unitOfWork.ProductService.EditProduct(oldProduct);
 
         _unitOfWork.Save();
         return RedirectToAction("GetProducts");

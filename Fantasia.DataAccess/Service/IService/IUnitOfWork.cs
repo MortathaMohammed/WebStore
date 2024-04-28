@@ -3,7 +3,7 @@ public interface IUnitOfWork
 {
     IProductService ProductService { get; }
     ICategoryService CategoryService { get; }
-    IColoreService ColoreService { get; }
+    IColorService ColorService { get; }
     ISizeService SizeService { get; }
     void Save();
 }

@@ -1,5 +1,7 @@
+using System.Reflection;
 using Fantasia.DataAccess.Entity;
 using Fantasia.DataAccess.Entity.Account;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,36 +15,58 @@ public class ApplicationDbContext : IdentityDbContext<AppUser>
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Colore> Colors { get; set; }
+        public DbSet<Color> Colours { get; set; }
         public DbSet<Size> Sizes { get; set; }
 
-        // protected override void OnModelCreating(ModelBuilder builder)
-        // {
-        //         builder.Entity<ProductColor>()
-        //                 .HasKey(pc => new { pc.ProductId, pc.ColorId });
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+                builder.Entity<ProductColor>()
+                        .HasKey(pc => new { pc.ProductId, pc.ColorId });
 
-        //         builder.Entity<ProductSize>()
-        //                 .HasKey(pz => new { pz.ProductId, pz.SizeId });
+                builder.Entity<ProductColor>()
+                        .HasOne(pc => pc.Product)
+                        .WithMany(p => p.ProductColours)
+                        .HasForeignKey(pc => pc.ProductId)
+                        .OnDelete(DeleteBehavior.Restrict);
 
-        //         builder.Entity<ProductColor>()
-        //                 .HasOne(p => p.Product)
-        //                 .WithMany(c => c.ProductColours)
-        //                 .HasForeignKey(p => p.ProductId);
+                builder.Entity<ProductColor>()
+                        .HasOne(pc => pc.Color)
+                        .WithMany(c => c.ProductColours)
+                        .HasForeignKey(pc => pc.ColorId)
+                        .OnDelete(DeleteBehavior.Restrict);
 
-        //         builder.Entity<ProductColor>()
-        //                .HasOne(c => c.Colore)
-        //                .WithMany(pc => pc.ProductColours)
-        //                .HasForeignKey(p => p.ColorId);
 
-        //         builder.Entity<ProductSize>()
-        //                 .HasOne(p => p.Product)
-        //                 .WithMany(c => c.ProductSizes)
-        //                 .HasForeignKey(p => p.ProductId);
+                builder.Entity<ProductSize>()
+                        .HasKey(pz => new { pz.ProductId, pz.SizeId });
 
-        //         builder.Entity<ProductSize>()
-        //                .HasOne(c => c.Size)
-        //                .WithMany(pc => pc.ProductSizes)
-        //                .HasForeignKey(p => p.SizeId);
+                builder.Entity<ProductSize>()
+                        .HasOne(pz => pz.Product)
+                        .WithMany(p => p.ProductSizes)
+                        .HasForeignKey(pz => pz.ProductId)
+                        .OnDelete(DeleteBehavior.Restrict);
 
-        // }
+                builder.Entity<ProductSize>()
+                        .HasOne(pz => pz.Size)
+                        .WithMany(z => z.ProductSizes)
+                        .HasForeignKey(pz => pz.SizeId)
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                List<IdentityRole> roles = new List<IdentityRole>
+                {
+                new IdentityRole
+                {
+                        Name = "Admin",
+                        NormalizedName = "ADMIN"
+                },
+                new IdentityRole
+                {
+                        Name = "User",
+                        NormalizedName = "USER"
+                }
+                };
+                builder.Entity<IdentityRole>().HasData(roles);
+                base.OnModelCreating(builder);
+                builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+        }
 }

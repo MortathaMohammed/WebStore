@@ -1,6 +1,6 @@
-@model Colore
+@model Color
 @{
-    ViewData["Title"] = "Edit Colore";
+    ViewData["Title"] = "Edit Color";
 }
 
 <h3 class="mx-5 mt-5">تعديل @Model.Name</h3>
@@ -8,7 +8,7 @@
 <div class="row mx-5 mt-5 mb-5">
 
     <div class="col-md-6">
-        <form asp-action="EditColore" enctype="multipart/form-data">
+        <form asp-action="EditColor" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group mt-3">
@@ -24,7 +24,7 @@
 
             <div class="form-group mt-3">
                 <input type="submit" value="تعديل" class="btn btn-warning" />
-                <a class="btn btn-secondary" asp-action="GetColores">الالوان</a>
+                <a class="btn btn-secondary" asp-action="GetColours">الالوان</a>
             </div>
         </form>
     </div>

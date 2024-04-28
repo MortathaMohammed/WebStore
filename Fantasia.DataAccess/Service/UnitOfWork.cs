@@ -10,7 +10,7 @@ public class UnitOfWork : IUnitOfWork
 
     public ICategoryService CategoryService { get; set; }
 
-    public IColoreService ColoreService { get; set; }
+    public IColorService ColorService { get; set; }
 
     public ISizeService SizeService { get; set; }
 
@@ -18,7 +18,7 @@ public class UnitOfWork : IUnitOfWork
     {
         _dbContext = dbContext;
         CategoryService = new CategoryService(_dbContext);
-        ColoreService = new ColoreService(_dbContext);
+        ColorService = new ColorService(_dbContext);
         ProductService = new ProductService(_dbContext);
         SizeService = new SizeService(_dbContext);
 
