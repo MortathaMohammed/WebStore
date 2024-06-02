@@ -17,13 +17,17 @@ public class CategoryController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetCategories()
+    public async Task<IActionResult> GetCategories(string search)
     {
-        var categoryList = new CategoryListCateogry();
-        categoryList.Categories = await _unitOfWork.CategoryService.GetCategories();
-        categoryList.Category = new Category();
-        return View(categoryList);
+
+        var categories = await _unitOfWork.CategoryService.GetCategories();
+        if (!String.IsNullOrEmpty(search))
+        {
+            categories = categories.Where(n => n.Name!.Contains(search)).ToList();
+        }
+        return View(categories);
     }
+
 
     [HttpGet]
     public async Task<IActionResult> GetCategoryById(int id)

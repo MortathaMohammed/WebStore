@@ -9,21 +9,20 @@ namespace Fantasia.Mvc.Controllers;
 public class ColorController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IHostingEnvironment _hostingEnvironment;
 
-
-    public ColorController(IUnitOfWork unitOfWork, IHostingEnvironment hostingEnvironment)
+    public ColorController(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
-        _hostingEnvironment = hostingEnvironment;
-
     }
+
     [HttpGet]
     public async Task<IActionResult> GetColours()
     {
-        var colorList = new ColorListColor();
-        colorList.Colours = await _unitOfWork.ColorService.GetColours();
-        colorList.Color = new Color();
+        var colorList = new ColorListColor
+        {
+            Colours = await _unitOfWork.ColorService.GetColours(),
+            Color = new Color()
+        };
         return View(colorList);
     }
 
@@ -44,7 +43,6 @@ public class ColorController : Controller
     {
         if (color.Name != null || color.Code != null)
         {
-
             var newColor = new Color
             {
                 Name = color.Name,
@@ -60,7 +58,6 @@ public class ColorController : Controller
             return RedirectToAction("GetColours");
         }
         return View(color);
-
     }
 
     [HttpGet]
@@ -71,7 +68,6 @@ public class ColorController : Controller
         {
             return RedirectToAction("GetColours");
         }
-
         return View(color);
     }
 
@@ -81,11 +77,9 @@ public class ColorController : Controller
         var oldColor = await _unitOfWork.ColorService.GetColor(color.Id);
         oldColor.Name = color.Name;
         oldColor.Code = color.Code;
-
         await _unitOfWork.ColorService.EditColor(oldColor);
         _unitOfWork.Save();
         return RedirectToAction("GetColours");
-
     }
 
     [HttpGet]
@@ -100,9 +94,7 @@ public class ColorController : Controller
     {
         var oldColor = await _unitOfWork.ColorService.GetColor(color.Id);
         await _unitOfWork.ColorService.DeleteColor(oldColor);
-
         _unitOfWork.Save();
-
         return RedirectToAction("GetColours");
     }
 }

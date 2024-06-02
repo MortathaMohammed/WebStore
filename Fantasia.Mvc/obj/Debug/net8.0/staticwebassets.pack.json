@@ -37,6 +37,10 @@
       "PackagePath": "staticwebassets/images/Horses.jpg"
     },
     {
+      "Id": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/images/Steam-Community-Market-Listings-for-383870-Firewatch-.jpg",
+      "PackagePath": "staticwebassets/images/Steam-Community-Market-Listings-for-383870-Firewatch-.jpg"
+    },
+    {
       "Id": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/images/cat2.jpeg",
       "PackagePath": "staticwebassets/images/cat2.jpeg"
     },
@@ -51,6 +55,10 @@
     {
       "Id": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/images/newDog.jpg",
       "PackagePath": "staticwebassets/images/newDog.jpg"
+    },
+    {
+      "Id": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/images/pexels.jpg",
+      "PackagePath": "staticwebassets/images/pexels.jpg"
     },
     {
       "Id": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/images/photo_2024-04-12_03-05-36.jpg",

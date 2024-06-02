@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8uzUyUyF4+4TeQcH/g2p9Us3bzNSoKR/fkAnD4X0+Lg=",
+  "Hash": "oORB601p0Nf5PqXd95zhbfuAefJojtX+ao8PzgH9wpE=",
   "Source": "Fantasia.Mvc",
   "BasePath": "_content/Fantasia.Mvc",
   "Mode": "Default",
@@ -283,6 +283,25 @@
       "OriginalItemSpec": "wwwroot/images/newDog.jpg"
     },
     {
+      "Identity": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/images/pexels.jpg",
+      "SourceId": "Fantasia.Mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/",
+      "BasePath": "_content/Fantasia.Mvc",
+      "RelativePath": "images/pexels.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/pexels.jpg"
+    },
+    {
       "Identity": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/images/photo_2024-04-12_03-05-36.jpg",
       "SourceId": "Fantasia.Mvc",
       "SourceType": "Discovered",
@@ -300,6 +319,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/photo_2024-04-12_03-05-36.jpg"
+    },
+    {
+      "Identity": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/images/Steam-Community-Market-Listings-for-383870-Firewatch-.jpg",
+      "SourceId": "Fantasia.Mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/",
+      "BasePath": "_content/Fantasia.Mvc",
+      "RelativePath": "images/Steam-Community-Market-Listings-for-383870-Firewatch-.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/Steam-Community-Market-Listings-for-383870-Firewatch-.jpg"
     },
     {
       "Identity": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/wwwroot/js/site.js",
