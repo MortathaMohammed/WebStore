@@ -1,0 +1,40 @@
+@model Fantasia.DataAccess.Entity.Category
+
+@{
+    ViewData["Title"] = "Edit Category";
+}
+
+<h1 class="mx-5 mt-5">تعديل القسم</h1>
+
+<hr />
+<div class="row mx-3 mt-5">
+    <div class="col-md-6">
+        <img src="~/images/@Model.ImageUrl" width="100%" height="100%" class="img-thumbnail" />
+    </div>
+    <div class="col-md-4">
+        <form asp-action="EditCategory" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group mt-3">
+                <label class="control-label">الاسم</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label class="control-label">أضافة صورة</label>
+                <input asp-for="Image" class="form-control" accept="image/*" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="تعديل" class="btn btn-warning" />
+                <a class="btn btn-secondary" asp-action="GetCategories">الاقسام</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,67 +1,46 @@
 using Fantasia.DataAccess.Data;
-using Fantasia.DataAccess.Entity.Account;
 using Fantasia.DataAccess.Service;
 using Fantasia.DataAccess.Service.IService;
+using Fantasia.Mvc.Helpers;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("dbConnection"))
-);
+    options.UseSqlServer(builder.Configuration.GetConnectionString("conn")));
 
-builder.Services.AddIdentity<AppUser, IdentityRole>(
-    options =>
-        {
-            options.Password.RequiredUniqueChars = 0;
-            options.Password.RequireUppercase = false;
-            options.Password.RequiredLength = 8;
-            options.Password.RequireNonAlphanumeric = false;
-            options.Password.RequireLowercase = false;
-        })
-    .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = $"/Identity/Account/Login";
+    options.LogoutPath = $"/Identity/Account/Logout";
+    options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+});
 
+
+builder.Services.AddRazorPages();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IEmailSender, EmailSender>();
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline.(Cannot create a DbSet for 'IdentityUser' because this type is not included in the model for the context.)'
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
 app.UseStaticFiles();
-
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
-
+app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
 
-
-using (var scope = app.Services.CreateScope())
-{
-    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
-
-    string email = "admin@admin.com";
-    string password = "Test1234@";
-    string name = "MortathaMohammed";
-    if (await userManager.FindByEmailAsync(email) == null)
-    {
-        var user = new AppUser();
-        user.Name = name;
-        user.UserName = email;
-        user.Email = email;
-
-        await userManager.CreateAsync(user, password);
-        await userManager.AddToRoleAsync(user, "Admin");
-    }
-
-}
+DbIninalizer.InitializeAsync(app.Services).Wait();
 app.Run();

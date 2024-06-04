@@ -1,6 +1,6 @@
 using AutoMapper;
 using Fantasia.DataAccess.Entity;
-using Fantasia.Mvc.ViewModel.ProductViewModel;
+using Fantasia.Mvc.Models.ViewModel.ProductViewModel;
 
 namespace Fantasia.Mvc.Helpers;
 public class Helper : Profile
