@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fantasia.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a758f43ca620e9ac48d2aae4dcbb1090a58a8b1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1241a5c3de48bb6705f0a3c8db712178b84c184c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fantasia.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fantasia.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
