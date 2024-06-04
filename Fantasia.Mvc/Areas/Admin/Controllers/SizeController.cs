@@ -18,9 +18,11 @@ public class SizeController : Controller
     [HttpGet]
     public async Task<IActionResult> GetSizes()
     {
-        var sizeList = new SizeListSize();
-        sizeList.Sizes = await _unitOfWork.SizeService.GetSizes();
-        sizeList.Size = new Size();
+        var sizeList = new SizeListSize
+        {
+            Sizes = await _unitOfWork.SizeService.GetSizes(),
+            Size = new Size()
+        };
         return View(sizeList);
     }
 
@@ -40,7 +42,6 @@ public class SizeController : Controller
     [HttpPost]
     public async Task<IActionResult> CreateSize(Size size)
     {
-
         var newSize = new Size
         {
             Name = size.Name,
@@ -53,7 +54,6 @@ public class SizeController : Controller
         }
         _unitOfWork.Save();
         return RedirectToAction("GetSizes");
-
     }
 
     [HttpGet]
@@ -64,7 +64,6 @@ public class SizeController : Controller
         {
             return RedirectToAction("GetSizes");
         }
-
         return View(size);
     }
 
@@ -73,8 +72,6 @@ public class SizeController : Controller
     {
         var oldSize = await _unitOfWork.SizeService.GetSize(size.Id);
         oldSize.Name = size.Name;
-
-
         await _unitOfWork.SizeService.EditSize(oldSize);
         _unitOfWork.Save();
         return RedirectToAction("GetSizes");
@@ -93,9 +90,7 @@ public class SizeController : Controller
     {
         var oldSize = await _unitOfWork.SizeService.GetSize(size.Id);
         await _unitOfWork.SizeService.DeleteSize(oldSize);
-
         _unitOfWork.Save();
-
         return RedirectToAction("GetSizes");
     }
 }

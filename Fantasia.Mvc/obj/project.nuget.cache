@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "sJVBO4Wqj9SuQ8YYeZpw3iQgsET91CMAfW9hfwzEl7u43YQLABWEbJDl8mO3xye6nk2+YQUMT0XEL/mXB+lrLA==",
+  "dgSpecHash": "F4cT5B8geA8/ewDmKzPirkSFLvEhO1NaPoTor3kqNVGM1s8RHilt9ebVPKu4v4/SjDLy4RZuPH3wXtyPGlSRVg==",
   "success": true,
   "projectFilePath": "/home/mdrazor/program/Fantasia/Fantasia.Mvc/Fantasia.Mvc.csproj",
   "expectedPackageFiles": [
@@ -53,7 +53,10 @@
     "/home/mdrazor/.nuget/packages/system.text.encoding.codepages/6.0.0/system.text.encoding.codepages.6.0.0.nupkg.sha512",
     "/home/mdrazor/.nuget/packages/system.text.encodings.web/8.0.0/system.text.encodings.web.8.0.0.nupkg.sha512",
     "/home/mdrazor/.nuget/packages/system.text.json/8.0.0/system.text.json.8.0.0.nupkg.sha512",
-    "/home/mdrazor/.nuget/packages/system.threading.channels/6.0.0/system.threading.channels.6.0.0.nupkg.sha512"
+    "/home/mdrazor/.nuget/packages/system.threading.channels/6.0.0/system.threading.channels.6.0.0.nupkg.sha512",
+    "/home/mdrazor/.nuget/packages/microsoft.netcore.app.ref/8.0.4/microsoft.netcore.app.ref.8.0.4.nupkg.sha512",
+    "/home/mdrazor/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.4/microsoft.aspnetcore.app.ref.8.0.4.nupkg.sha512",
+    "/home/mdrazor/.nuget/packages/microsoft.netcore.app.host.linux-x64/8.0.4/microsoft.netcore.app.host.linux-x64.8.0.4.nupkg.sha512"
   ],
   "logs": []
 }
