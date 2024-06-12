@@ -1,8 +1,8 @@
 using Fantasia.DataAccess.Entity;
 using Fantasia.DataAccess.Service.IService;
-using Fantasia.Mvc.Models;
 using Microsoft.AspNetCore.Mvc;
 namespace Fantasia.Mvc.Areas.Admin.Controllers;
+[Area("Admin")]
 public class CategoryController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;

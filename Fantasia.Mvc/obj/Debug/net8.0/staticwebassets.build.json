@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KLM//37QP7EcVWkLXN4MRAAHi6K++8LFZaE6kNiWevs=",
+  "Hash": "XyRkakmue5kPV8vOTRtE6ohJyt6+5Nmng1hua5J3yNo=",
   "Source": "Fantasia.Mvc",
   "BasePath": "_content/Fantasia.Mvc",
   "Mode": "Default",
@@ -1459,6 +1459,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\photo_2024-04-12_03-05-36.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\leoda\\Desktop\\Projects\\Store\\WebStore\\Fantasia.Mvc\\wwwroot\\images\\Steam-Community-Market-Listings-for-383870-Firewatch-.jpg",
+      "SourceId": "Fantasia.Mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\leoda\\Desktop\\Projects\\Store\\WebStore\\Fantasia.Mvc\\wwwroot\\",
+      "BasePath": "_content/Fantasia.Mvc",
+      "RelativePath": "images/Steam-Community-Market-Listings-for-383870-Firewatch-.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Steam-Community-Market-Listings-for-383870-Firewatch-.jpg"
     },
     {
       "Identity": "C:\\Users\\leoda\\Desktop\\Projects\\Store\\WebStore\\Fantasia.Mvc\\wwwroot\\js\\site.js",

@@ -1,9 +1,7 @@
+using Fantasia.DataAccess.Service.IService;
 using Fantasia.Mvc.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using Fantasia.Mvc.Models;
-using Fantasia.DataAccess.Service.IService;
 
 namespace Fantasia.Mvc.Areas.Customer.Controllers;
 [Area("Customer")]

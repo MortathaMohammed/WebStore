@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MovieStore.Models.ViewModels
+namespace Fantasia.Mvc.Models.ViewModel.AuthViewModel
 {
     public class LoginViewModel
     {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Fantasia.DataAccess.Entity.Account;
+using Microsoft.AspNetCore.Identity;
 
 namespace Fantasia.Mvc.Helpers
 {
@@ -9,7 +10,7 @@ namespace Fantasia.Mvc.Helpers
             using (var scope = serviceProvider.CreateScope())
             {
                 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
 
                 var roles = new[] { StaticData.role_admin, StaticData.role_cust };
                 foreach (var role in roles)
@@ -21,7 +22,7 @@ namespace Fantasia.Mvc.Helpers
                 string adminEmail = "admin@admin.com";
                 if (await userManager.FindByEmailAsync(adminEmail) == null)
                 {
-                    var user = new IdentityUser
+                    var user = new AppUser
                     {
                         UserName = adminEmail,
                         Email = adminEmail

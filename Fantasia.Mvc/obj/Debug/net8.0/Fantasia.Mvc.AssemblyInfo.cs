@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fantasia.Mvc")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe9e3af844639f45c1145249d0544db2e823024c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bfdfdee3158537efc29be714d8d69e11625a69c7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fantasia.Mvc")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fantasia.Mvc")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
