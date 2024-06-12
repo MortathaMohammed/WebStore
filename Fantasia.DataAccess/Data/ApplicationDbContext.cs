@@ -1,12 +1,11 @@
 using Fantasia.DataAccess.Entity;
-using Fantasia.DataAccess.Entity.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace Fantasia.DataAccess.Data;
-public class ApplicationDbContext : IdentityDbContext<AppUser>
+public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {

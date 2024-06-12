@@ -1,5 +1,4 @@
 using Fantasia.DataAccess.Data;
-using Fantasia.DataAccess.Entity.Account;
 using Fantasia.DataAccess.Service;
 using Fantasia.DataAccess.Service.IService;
 using Fantasia.Mvc.Helpers;
@@ -14,7 +13,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("conn")));
 
-builder.Services.AddIdentity<AppUser, IdentityRole>()
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
